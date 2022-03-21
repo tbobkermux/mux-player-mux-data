@@ -1,24 +1,65 @@
-import logo from './logo.svg';
-import './App.css';
+import MuxPlayer from '@mux-elements/mux-player-react';
+import React, {useState, useRef} from 'react';
+
+const MuxPlayerMuxData = (props) => {
+  return (
+    <div style={{width: '800px', height: '400px'}}>
+      <MuxPlayer
+        ref={props.reference}
+        style={{ height: '100%', maxWidth: '100%' }}
+        playbackId={props.playbackid}
+        debug={true}
+        metadata={{
+          video_id: 'video-id-123456',
+          video_title: 'Super Interesting Video',
+          viewer_user_id: 'user-id-bc-789',
+        }}
+        envKey={props.env}
+        streamType="on-demand"
+        autoPlay
+        muted
+      />
+    </div>
+  );
+};
 
 function App() {
+
+  const [envkey, setEnvkey] = useState("vnig1g40erhkldvhfc6s26u1q");
+  const [playbackid, setPlaybackid] = useState("4Lzvfer7GuDh5bEm5tnAsqO01wAtLQBO6HWamkt01Q5g8");
+
+  const muxvideoref = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(muxvideoref.current);
+    muxvideoref.current.play();
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>    
+
+    <div style={{margin: '50px auto', width: '100%', textAlign: 'center'}}>
+      <form onSubmit={handleSubmit}>        
+      <label style={{margin: '10px'}}>
+          Envkey:
+          <input type="text" style={{marginLeft: '5px'}} onInput={e => setEnvkey(e.target.value)}/>        
+      </label>
+      <label style={{margin: '10px'}}>
+          Playbackid:
+          <input type="text" style={{marginLeft: '5px'}} onInput={e => setPlaybackid(e.target.value)} />        
+      </label>   
+        <input type="submit" value="Submit" />
+      </form>
     </div>
+    <div className="App" style={{margin: '0 auto', width: '800px'}}>
+        <MuxPlayerMuxData reference={muxvideoref} env={envkey} playbackid={playbackid} />
+        <h4>PlaybackID: {playbackid}</h4>
+        <h4>EnvKey: {envkey}</h4>
+    </div>
+
+
+    </>
   );
 }
 

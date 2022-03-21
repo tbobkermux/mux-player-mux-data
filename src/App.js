@@ -16,7 +16,6 @@ const MuxPlayerMuxData = (props) => {
         }}
         envKey={props.env}
         streamType="on-demand"
-        autoPlay
         muted
       />
     </div>

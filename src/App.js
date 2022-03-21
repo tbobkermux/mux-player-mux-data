@@ -54,8 +54,8 @@ function App() {
     </div>
     <div className="App" style={{margin: '0 auto', width: '800px'}}>
         <MuxPlayerMuxData reference={muxvideoref} env={envkey} playbackid={playbackid} />
-        <h4>PlaybackID: {playbackid}</h4>
-        <h4>EnvKey: {envkey}</h4>
+        <h4>Current EnvKey: {envkey}</h4>
+        <h4>Current PlaybackID: {playbackid}</h4>
     </div>
 
 

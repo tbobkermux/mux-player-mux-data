@@ -41,6 +41,7 @@ function App() {
     <>    
 
     <div style={{margin: '50px auto', width: '100%', textAlign: 'center'}}>
+      <h1>Test Player</h1>
       <form onSubmit={handleSubmit}>        
       <label style={{margin: '10px'}}>
           Envkey:

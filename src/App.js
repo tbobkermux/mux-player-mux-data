@@ -13,7 +13,8 @@ const MuxPlayerMuxData = (props) => {
           video_id: 'video-id-123456',
           video_title: 'Super Interesting Video',
           viewer_user_id: 'user-id-bc-789',
-          video_cdn: 'Tims Test CDN'
+          video_cdn: 'Tims Test CDN',
+          custom_1: 'My Custom Dimension Value'
         }}
         envKey={props.env}
         streamType="on-demand"
